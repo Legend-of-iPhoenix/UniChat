@@ -32,14 +32,13 @@ function getCookie(cname) {
     return "";
 }
 
-
 function checkCookie() {
     var u = getCookie("unichat_uid");
     if (u != "") {
         alert("Welcome back to UniChat, " + u);
     } else {
         u = prompt("Please Enter Your Username:", assignUsername());
-	    u = u.replace(/\w/g,'');
+	    u = u.replace(/\W/g,'');
         if (u != "" && u != null && u != "_iPhoenix_") {
             setCookie("unichat_uid", u, 2*365);
         }
@@ -74,42 +73,38 @@ dataRef.orderByChild("ts").limitToLast(10).on('child_added', function (snapshot)
     var datePosted = data.ts;
     var tempDate = new Date;
     tempDate.setTime(datePosted);
-    var dateString = formatTime(tempDate);
+    var dateString = tempDate.getHours() + ":" + tempDate.getMinutes() + ":" + tempDate.getSeconds()
+
     var posterUsername = data.un;
     if (message != undefined)
     {
       var node = document.createElement("DIV");
       var messageHeader = message.substring(0,3);
-      if (messageHeader === "/me")
+      var textnode;
+      if (messageHeader === "/me" && messageHeader !== "/pm")
       {
-	var textnode = document.createTextNode('\n' + "[" + dateString + "]  *" + posterUsername + ' ' + message.substring(3,message.length));
+	textnode = document.createTextNode('\n' + "[" + dateString + "]  *" + posterUsername + ' ' + message.substring(3,message.length));
       }
       else
       {
-        var textnode = document.createTextNode('\n' + "[" + dateString + "]  " + posterUsername + ': ' + message);
+	//var usernamePotential = message.substring(0,3);
+	var str = message.substring(4,message.length);
+	var reg = /\w*/;
+        var match = reg.exec(str);
+	var messagePM = message.substring(4+match[0].length,message.length);
+	if (messageHeader === "/pm" && match[0] == username)
+	{
+           textnode = document.createTextNode('\n' + "[" + dateString + "]  *" + posterUsername + ' whispers to you: ' + messagePM);
+	}
+	else
+	{
+           if (messageHeader !== "/pm")
+	   {
+              textnode = document.createTextNode('\n' + "[" + dateString + "]  " + posterUsername + ': ' + message);
+	   }
+	}
       }
       node.appendChild(textnode);
       document.getElementById("output").appendChild(node);
     }
 });
-
-var formatTime = function(ts) {
-    var dt = new Date(ts);
-
-    var hours = dt.getHours();
-    var minutes = dt.getMinutes();
-    var seconds = dt.getSeconds();
-
-    // the above dt.get...() functions return a single digit
-    // so I prepend the zero here when needed
-    if (hours < 10) 
-     hours = '0' + hours;
-
-    if (minutes < 10) 
-     minutes = '0' + minutes;
-
-    if (seconds < 10) 
-     seconds = '0' + seconds;
-
-    return hours + ":" + minutes + ":" + seconds;
-}

@@ -1,18 +1,57 @@
 * {
-  font-family: Helvetica, sans-serif;
+  font-family: 'Lato', sans-serif;
+  color: #aaa;
 }
 
 body {
-  background-color: #333;
+  background-color: #454545;
   color: #0e0;
 }
 
 ol {
-  color: #0c0;
-  background-color: #555;
+  width: 33%;
+  color: #fff;
+  background-color: #222;
+  border-radius:5px;
+  box-shadow:0 1px 5px #222 inset,0 1px 0 #666
+}
+
+#output:nth-child(odd) {
+  color: #777;
+}
+#output:nth-child(even) {
+  color: #555;
 }
 
 #output {
-  color: #3e3;
+  width: 75%;
+  border-radius:5px;
+  background-color: #222
+  box-shadow:0 1px 5px #222 inset,0 1px 0 #666;
 }
 
+input[type=text] {
+    width: 100%;
+    padding: 5px 5px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    width: 10%;
+    color: #222;
+}
+
+input[type=text]:focus {
+    border: 3px solid #555;
+    width: 20%
+}
+
+h1 {
+  color: #ccc;
+}
+
+h3 {
+  color: #aaa;
+}

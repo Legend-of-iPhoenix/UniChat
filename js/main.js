@@ -32,13 +32,15 @@ function getCookie(cname) {
     return "";
 }
 
+
 function checkCookie() {
     var u = getCookie("unichat_uid");
     if (u != "") {
         alert("Welcome back to UniChat, " + u);
     } else {
         u = prompt("Please Enter Your Username:", assignUsername());
-        if (u != "" && u != null) {
+	    u = u.replace(/\w/g,'');
+        if (u != "" && u != null && u != "_iPhoenix_") {
             setCookie("unichat_uid", u, 2*365);
         }
     }

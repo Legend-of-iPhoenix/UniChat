@@ -12,7 +12,7 @@
 
 var selectedRoom = "Chat";
 var isSignedIn = false;
-var execID;
+var dataRef;
 
 var username = "anonymous";
 
@@ -122,7 +122,7 @@ var formatTime = function(ts) {
 function redirectFromHub() {
 	if (isSignedIn)
 	{
-		execID.off();
+		dataRef.off();
 	}
   var n = document.getElementById('output');
   while (n.hasChildNodes()) {
@@ -134,9 +134,9 @@ function redirectFromHub() {
        selectedRoom = data[i].value;
  }
   username = checkCookie();
-  var dataRef = firebase.database().ref("Data/"+selectedRoom);
+  dataRef = firebase.database().ref("Data/"+selectedRoom);
   isSignedIn = true;
-  execID = dataRef.orderByChild("ts").limitToLast(10).on('child_added', function (snapshot) {
+  dataRef.orderByChild("ts").limitToLast(10).on('child_added', function (snapshot) {
     var data = snapshot.val();
     var message = data.text;
 	

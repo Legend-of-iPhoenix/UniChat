@@ -13,7 +13,19 @@ ol {
   color: #fff;
   background-color: #222;
   border-radius:5px;
-  box-shadow:0 1px 5px #222 inset,0 1px 0 #666
+  box-shadow:0 1px 5px #222 inset,0 1px 0 #666;
+}
+
+ul {
+  width: 33%;
+  color: #fff;
+  background-color: #222;
+  border-radius:5px;
+  box-shadow:0 1px 5px #222 inset,0 1px 0 #666;
+}
+
+.tutorial {
+  padding: 7px;
 }
 
 #output:nth-child(odd) {
@@ -26,7 +38,7 @@ ol {
 #output {
   width: 75%;
   border-radius:5px;
-  background-color: #222
+  background-color: #222;
   box-shadow:0 1px 5px #222 inset,0 1px 0 #666;
 }
 

@@ -107,6 +107,10 @@ var formatTime = function(ts) {
 }
 
 function redirectFromHub() {
+  var n = document.getElementById('output');
+  while (n.hasChildNodes()) {
+    n.removeChild(n.firstChild);
+  }
   var data = document.getElementsByName("hubSelect");
   for(var i = 0; i < data.length; i++) {
    if(data[i].checked)

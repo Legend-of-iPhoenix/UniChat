@@ -176,6 +176,9 @@ function redirectFromHub() {
       }
       node.appendChild(textnode);
       document.getElementById("output").appendChild(node);
+      
+var objDiv = document.getElementById("output");
+objDiv.scrollTop = objDiv.scrollHeight;
     }
 });
 }

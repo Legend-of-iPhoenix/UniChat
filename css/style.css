@@ -53,13 +53,28 @@ input[type=text] {
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
-    width: 10%;
+    width: 50%;
     color: #222;
 }
 
 input[type=text]:focus {
     border: 3px solid #555;
-    width: 20%
+}
+
+input[type=button] {
+  border: none;
+  color: #000;
+  cursor: pointer;
+  text-align: center;
+    text-decoration: none;
+  background-color: #ccc;
+  display: inline-block;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+input[type=button]:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 h1 {

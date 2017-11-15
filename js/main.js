@@ -136,7 +136,7 @@ function redirectFromHub() {
   username = checkCookie();
   dataRef = firebase.database().ref("Data/"+selectedRoom);
   isSignedIn = true;
-  dataRef.orderByChild("ts").limitToLast(20).on('child_added', function (snapshot) {
+  dataRef.orderByChild("ts").limitToLast(25).on('child_added', function (snapshot) {
     var data = snapshot.val();
     var message = data.text;
 	

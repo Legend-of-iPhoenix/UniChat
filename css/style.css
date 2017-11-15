@@ -62,8 +62,10 @@ input[type=text]:focus {
 }
 
 input[type=button] {
+  padding: 10px;
   border: none;
   color: #000;
+  font-size: 16px;
   cursor: pointer;
   text-align: center;
     text-decoration: none;

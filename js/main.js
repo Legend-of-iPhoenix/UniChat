@@ -89,7 +89,8 @@ function submitMessage() {
 	  database.ref("Data/"+selectedRoom).push({
  	      text: messageBox.value,
 	      ts: Date.now(),
-	      un: username
+	      un: username,
+	      tag: ["default"]
  	 });
 	}
   messageBox.value = "";

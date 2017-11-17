@@ -60,12 +60,12 @@ function checkCookie() {
   if (u != "") {
     alert("Welcome back to UniChat, " + u);
     var database = firebase.database();
-    //database.ref("Data/").push({
-    //  text: u + " has entered the room.",
-    //  ts: Date.now(),
-    //  un: "CONSOLE",
-    //  tag: ["all"]
-    //});
+    database.ref("Data/").push({
+      text: u + " has entered the room. :]",
+      ts: Date.now(),
+      un: "[",
+      tag: ["all"]
+    });
   } else {
     u = prompt("Please Enter a Username:", assignUsername());
     u = u.replace(/\W/g, '');

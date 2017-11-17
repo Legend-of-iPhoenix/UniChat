@@ -9,8 +9,11 @@
 //
 // (just ask if you want to use my source, I probably won't say no.) 
 // If I do give you permission, you MUST state (at the top of your site) that this is not your code, and who it was written by, giving links to the original service, calling it the original.
-// If I cloned this, I would have to put, at the top of my site: Most of the code for this chatting service was written by <a href="https://github.com/Legend-of-iPhoenix">_iPhoenix_</a>. 
+// Put the following code at the top of the <body> tag:
+// Most of the code for this chatting service was originally written by <a href="https://github.com/Legend-of-iPhoenix">_iPhoenix_</a>. 
 // If you do not, then your site breaks international copyright law.
+//
+// All rights reserved.
 
 var selectedRoom = "Chat";
 var isSignedIn = false;

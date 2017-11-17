@@ -77,7 +77,11 @@ function checkCookie() {
   }
   return u;
 }
-
+function reset()
+{
+  document.cookie = ""
+  checkCookie();
+}
 function refresh() {
   var span, text;
   document.getElementById("filterDisplay").innerHTML = "";

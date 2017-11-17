@@ -80,7 +80,7 @@ function checkCookie() {
 function reset()
 {
   document.cookie = ""
-  checkCookie();
+  username = checkCookie();
 }
 function refresh() {
   var span, text;

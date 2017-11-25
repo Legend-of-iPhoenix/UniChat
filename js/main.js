@@ -158,6 +158,10 @@ document.getElementById("message").addEventListener("keyup", function(event) {
   }
 });
 
+function changeUsername() {
+  if (username == "TLM") 
+    username = "TheLastMillennial";
+}
 var formatTime = function(ts) {
   var dt = new Date(ts);
 
@@ -226,16 +230,24 @@ function redirectFromHub() {
         var match = reg.exec(str);
         var messagePM = message.substring(4 + match[0].length, message.length);
         if (messageHeader === "/pm" && match[0] == username) {
-          textnode = document.createTextNode('\n' + "[" + dateString + "]  *" + posterUsername + ' whispers to you: ' + messagePM);
+          textnode = document.createTextNode('\n' + "[" + dateString + "][PM]  ~" + posterUsername + ' whispers to you: ' + messagePM);
         } else {
           if (messageHeader !== "/pm") {
             textnode = document.createTextNode('\n' + "[" + dateString + "]  " + posterUsername + ': ' + message);
           }
         }
+        if (match[0] == "TLM" && username == "TheLastMillennial")
+        {
+          textnode = document.createTextNode('\n' + "[" + dateString + "][PM]  ~" + posterUsername + ' whispers to you: ' + messagePM);
+        }
       }
       node.appendChild(textnode);
       var textClass = "outputText";
       if (message.indexOf(username) != -1)
+      {
+        textClass = "highlight";
+      }
+      if (username == "TheLastMillennial" && message.indexOf("TLM") != -1)
       {
         textClass = "highlight";
       }

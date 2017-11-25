@@ -175,7 +175,10 @@ var formatTime = function(ts) {
 
   if (seconds < 10)
     seconds = '0' + seconds;
-
+  
+  if (hours == '00')
+    hours = '12';
+  
   return hours + ":" + minutes + ":" + seconds;
 }
 

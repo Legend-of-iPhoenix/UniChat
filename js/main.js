@@ -58,6 +58,8 @@ function getCookie(cname) {
 function checkCookie() {
   var u = getCookie("unichat_uid");
   if (u != "") {
+    if (u!= "iPhoenix")
+    {
     alert("Welcome back to UniChat, " + u);
     var database = firebase.database();
     database.ref("Data/").push({
@@ -66,10 +68,11 @@ function checkCookie() {
       un: "[",
       tag: ["all"]
     });
+    }
   } else {
     u = prompt("Please Enter a Username:", assignUsername());
     u = u.replace(/\W/g, '');
-    if (u != "" && u != null && u != "_iPhoenix_" && u != "Console" && u != "CONSOLE" && u != "DKKing") {
+    if (u != "" && u != null && u != "_iPhoenix_" && u != "Console" && u != "CONSOLE" && u != "DKKing" && u != "iPhoenix") {
       setCookie("unichat_uid", u, 2 * 365);
     } else {
       u = "_" + assignUsername();

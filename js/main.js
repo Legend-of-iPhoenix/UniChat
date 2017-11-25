@@ -162,6 +162,7 @@ function changeUsername() {
   if (username == "TLM") 
     username = "TheLastMillennial";
 }
+changeUsername();
 var formatTime = function(ts) {
   var dt = new Date(ts);
 

@@ -82,7 +82,7 @@ input[type=text]:focus {
 
 input[type=button] {
   padding: 2px 10px;
-  border-radius: 9px;
+  border-radius: 5px;
   margin: 4px;
   color: #000;
   font-size: 16px;

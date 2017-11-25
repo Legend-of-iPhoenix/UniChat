@@ -276,7 +276,7 @@ function refreshOutput() {
         var match = reg.exec(str);
         var messagePM = message.substring(4 + match[0].length, message.length);
         if (messageHeader === "/pm" && match[0] == username) {
-          textnode = document.createTextNode('\n' + "[" + dateString + "]  *" + posterUsername + ' whispers to you: ' + messagePM);
+          textnode = document.createTextNode('\n[PM]' + "[" + dateString + "]  ~" + posterUsername + ' whispers to you: ' + messagePM);
         } else {
           if (messageHeader !== "/pm") {
             textnode = document.createTextNode('\n' + "[" + dateString + "]  " + posterUsername + ': ' + message);

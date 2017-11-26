@@ -128,12 +128,21 @@ function submitMessage() {
   if (isSignedIn) {
     var database = firebase.database();
     var messageBox = document.getElementById("message");
+    var recipient = -1;
+    if (messageBox.value.substring(0,3) == "/pm")
+    {
+      var str = messageBox.value.substring(4, messageBox.value.length);
+      var reg = /\w*/;
+      var match = reg.exec(str);
+      recipient = match[0];
+    }
     if (messageBox.value != undefined && messageBox.value != "" && messageBox.value != '' && messageBox.value.length < 256) {
       database.ref("Data/").push({
         text: messageBox.value,
         ts: Date.now(),
         un: username,
-        tag: currentMessageTags
+        tag: currentMessageTags,
+        to: recipient
       });
       messageBox.value = "";
       currentMessageTags = ["_default"];
@@ -310,4 +319,47 @@ function refreshOutput() {
     }
     });
   });
+}
+
+function getRecentPMs() {
+  var output = document.getElementById("output");
+  var node = document.createElement("DIV");
+  var textNode = document.createTextNode("Here are your recent PM's:");
+  var hasPMs = false;
+  node.appendChild(textNode);
+  node.setAttribute("class", "outputText");
+  output.appendChild(node);
+  output.scrollTop = output.scrollHeight;
+  dataRef = firebase.database().ref("Data").orderByChild("to").equalTo(username).limitToLast(25);
+  dataRef.once('value').then(function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+    hasPMs = true;
+    node = document.createElement("DIV");
+    var data = childSnapshot.val();
+    var message = data.text;
+    var datePosted = data.ts;
+    var posterUsername = data.un;
+    var messagePM = message.substring(4 + data.to.length, message.length);
+    var tempDate = new Date;
+    tempDate.setTime(datePosted);
+    var dateString = formatTime(tempDate);
+      textnode = document.createTextNode('\n[PM]' + "[" + dateString + "]  ~" + posterUsername + ' whispers to you: ' + messagePM);
+      node.appendChild(textnode);
+      node.setAttribute("class", "highlight");
+      document.getElementById("output").appendChild(node);
+
+      var objDiv = document.getElementById("output");
+      objDiv.scrollTop = objDiv.scrollHeight;
+    });
+  });
+  window.setTimeout(function(){if (!hasPMs)
+  {
+    node = document.createElement("DIV");
+    textnode = document.createTextNode("You do not have any recent PM's.");
+    node.appendChild(textnode);
+    node.setAttribute("class","highlight");
+    output.appendChild(textnode);
+    var objDiv = document.getElementById("output");
+      objDiv.scrollTop = objDiv.scrollHeight;
+  }},1000);
 }

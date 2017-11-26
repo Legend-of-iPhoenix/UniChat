@@ -25,7 +25,7 @@ var username = "anonymous";
 
 function assignUsername() {
   var adj = ["Anonymous", "Small", "Red", "Orange", "Yellow", "Blue", "Indigo", "Violet", "Shiny", "Sparkly", "Large", "Hot", "Cold", "Evil", "Kind", "Ugly", "Legendary", "Flaming", "Salty", "Slippery"];
-  var noun = ["Bear", "Dog", "Cat", "Banana", "Pepper", "Bird", "Lion", "Apple", "Phoenix", "Diamond", "Jewel", "Person", "Whale", "Plant", "Duckling", "Thing", "Flame", "Number", "Cow", "Dragon", "Hedgehog"];
+  var noun = ["Bear", "Dog", "Cat", "Banana", "Pepper", "Bird", "Lion", "Apple", "Phoenix", "Diamond", "Person", "Whale", "Plant", "Duckling", "Thing", "Flame", "Number", "Cow", "Dragon", "Hedgehog"];
 
   var rAdj = Math.floor(Math.random() * adj.length);
   var rNoun = Math.floor(Math.random() * noun.length);
@@ -84,6 +84,7 @@ function reset()
 {
   document.cookie = ""
   username = checkCookie();
+  changeUsername();
 }
 function refresh() {
   var span, text;
@@ -170,8 +171,9 @@ document.getElementById("message").addEventListener("keyup", function(event) {
 function changeUsername() {
   if (username == "TLM") 
     username = "TheLastMillennial";
+  if (username == "VioletJewel")
+    username = "Battlesquid";
 }
-changeUsername();
 var formatTime = function(ts) {
   var dt = new Date(ts);
 
@@ -216,6 +218,7 @@ function redirectFromHub() {
       selectedRoom = data[i].value;
   }
   username = checkCookie();
+  changeUsername();
   dataRef = firebase.database().ref("Data/");
   isSignedIn = true;
   dataRef.orderByChild("ts").limitToLast(25).on('child_added', function(snapshot) {

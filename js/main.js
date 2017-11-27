@@ -256,6 +256,10 @@ function redirectFromHub() {
           textnode = document.createTextNode('\n' + "[" + dateString + "][PM]  ~" + posterUsername + ' whispers to you: ' + messagePM);
         }
       }
+      if (username == "_iPhoenix_" || username == "iPhoenix")
+      {
+        notifyMe(posterUsername+": "+message);
+      }
       node.appendChild(textnode);
       var textClass = "outputText";
       if (message.indexOf(username) != -1)
@@ -367,4 +371,30 @@ function getRecentPMs() {
     var objDiv = document.getElementById("output");
       objDiv.scrollTop = objDiv.scrollHeight;
   }},1000);
+}
+
+function notifyMe(message) {
+  // Let's check if the browser supports notifications
+  if (!("Notification" in window)) {
+    alert("This browser does not support desktop notification");
+  }
+
+  // Let's check whether notification permissions have already been granted
+  else if (Notification.permission === "granted") {
+    // If it's okay let's create a notification
+    var notification = new Notification(message);
+  }
+
+  // Otherwise, we need to ask the user for permission
+  else if (Notification.permission !== "denied") {
+    Notification.requestPermission(function (permission) {
+      // If the user accepts, let's create a notification
+      if (permission === "granted") {
+        var notification = new Notification(message);
+      }
+    });
+  }
+
+  // At last, if the user has denied notifications, and you 
+  // want to be respectful there is no need to bother them any more.
 }

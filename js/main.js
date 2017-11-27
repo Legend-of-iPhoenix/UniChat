@@ -173,6 +173,8 @@ function changeUsername() {
     username = "TheLastMillennial";
   if (username == "VioletJewel")
     username = "Battlesquid";
+  if (username = "xMarminq_________________________")
+    username = "xMarminq_";
 }
 var formatTime = function(ts) {
   var dt = new Date(ts);

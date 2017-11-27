@@ -173,7 +173,7 @@ function changeUsername() {
     username = "TheLastMillennial";
   if (username == "VioletJewel")
     username = "Battlesquid";
-  if (username = "xMarminq_________________________")
+  if (username == "xMarminq_________________________")
     username = "xMarminq_";
 }
 var formatTime = function(ts) {

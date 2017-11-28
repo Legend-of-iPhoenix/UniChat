@@ -68,12 +68,19 @@ function checkCookie() {
       un: "[",
       tag: ["all"]
     });
+      
     }
+    var n = new Date(Date.now());
+            var q = n.toString();
+            firebase.database().ref("usernames/" + u).set(q);
   } else {
     u = prompt("Please Enter a Username:", assignUsername());
     u = u.replace(/\W/g, '');
     if (u != "" && u != null && u != "_iPhoenix_" && u != "Console" && u != "CONSOLE" && u != "DKKing" && u != "iPhoenix") {
       setCookie("unichat_uid", u, 2 * 365);
+      var n = new Date(Date.now());
+            var q = n.toString();
+            firebase.database().ref("usernames/" + u).set(q);
     } else {
       u = "_" + assignUsername();
     }

@@ -385,9 +385,6 @@ function getRecentPMs() {
 
 function notifyMe(message) {
   // Let's check if the browser supports notifications
-  if (!("Notification" in window)) {
-    alert("This browser does not support desktop notification");
-  }
 
   // Let's check whether notification permissions have already been granted
   else if (Notification.permission === "granted") {

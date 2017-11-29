@@ -77,7 +77,7 @@ function checkCookie() {
     u = prompt("Please Enter a Username:", assignUsername());
     u = u.replace(/\W/g, '');
     if (u != "" && u != null && u != "_iPhoenix_" && u != "Console" && u != "CONSOLE" && u != "DKKing" && u != "iPhoenix") {
-      setCookie("unichat_uid", u, 2 * 365);
+      setCookie("unichat_uid",u,2*365);
       var n = new Date(Date.now());
             var q = n.toString();
             firebase.database().ref("usernames/" + u).set(q);
@@ -182,6 +182,9 @@ function changeUsername() {
     username = "Battlesquid";
   if (username == "xMarminq_________________________")
     username = "xMarminq_";
+  if (username == "VioletPerson")
+    username = "DKKing";
+  setCookie("unichat_uid",username,2*365);
 }
 var formatTime = function(ts) {
   var dt = new Date(ts);
